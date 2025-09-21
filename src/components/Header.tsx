@@ -23,7 +23,7 @@ const Header = () => {
       <div className="container mx-auto px-4 py-4">
         <nav className="flex items-center justify-between">
           {/* Logo */}
-          <button onClick={() => navigate('/')} className="text-xl md:text-2xl font-bold text-foreground hover:opacity-80 transition-opacity ml-20">
+          <button onClick={() => navigate('/')} className="text-xl font-bold text-foreground hover:opacity-80 transition-opacity ml-20 md:text-xl">
             Pasame la{' '}
             <span className="text-primary">Repe</span>
           </button>
