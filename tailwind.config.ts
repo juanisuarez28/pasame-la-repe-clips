@@ -57,6 +57,21 @@ export default {
           border: "hsl(var(--sidebar-border))",
           ring: "hsl(var(--sidebar-ring))",
         },
+        "recording-red": {
+          DEFAULT: "hsl(var(--recording-red))",
+          glow: "hsl(var(--recording-red-glow))",
+        },
+        "dark-surface": "hsl(var(--dark-surface))",
+        "darker-surface": "hsl(var(--darker-surface))",
+      },
+      backgroundImage: {
+        "gradient-hero": "var(--gradient-hero)",
+        "gradient-card": "var(--gradient-card)",
+        "gradient-recording": "var(--gradient-recording)",
+      },
+      boxShadow: {
+        glow: "var(--shadow-glow)",
+        card: "var(--shadow-card)",
       },
       borderRadius: {
         lg: "var(--radius)",
