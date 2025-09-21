@@ -8,12 +8,9 @@ const Hero = () => {
   return <div className="min-h-screen flex items-center justify-center relative overflow-hidden pt-16">
       {/* Background GIF */}
       <div className="absolute inset-0">
-        <img 
-          src={footballActionGif} 
-          alt="Football action background" 
-          className="w-full h-full object-cover"
-          style={{ filter: 'brightness(0.3)' }}
-        />
+        <img src={footballActionGif} alt="Football action background" className="w-full h-full object-cover" style={{
+        filter: 'brightness(0.3)'
+      }} />
       </div>
       
       {/* Content */}
@@ -34,7 +31,7 @@ const Hero = () => {
               <div className="w-16 h-16 mx-auto bg-gradient-recording rounded-full flex items-center justify-center">
                 <Video className="w-8 h-8 text-primary-foreground" />
               </div>
-              <h2 className="text-3xl font-bold text-foreground">Mirá tu repe</h2>
+              <h2 className="text-3xl font-bold text-foreground">Mirá tu Repe</h2>
               <p className="text-muted-foreground">Accedé a tu video usando usuario y contraseña</p>
               <Button variant="hero" size="lg" className="w-full" onClick={() => navigate('/login')}>
                 Ver mi video
