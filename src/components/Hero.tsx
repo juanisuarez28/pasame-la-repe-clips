@@ -16,10 +16,10 @@ const Hero = () => {
       
       {/* Content */}
       <div className="relative z-10 container mx-auto px-4">
-        <div className="text-center mb-12">
-          <h1 className="text-6xl md:text-8xl font-bold text-foreground mb-6">
+        <div className="text-center mb-12 mt-16 ">
+          <h1 className="md:text-8xl font-bold text-foreground mb-6 text-4xl">
             Pasame la 
-            <span className="text-transparent bg-gradient-recording bg-clip-text"> repe</span>
+            <span className="text-transparent bg-gradient-recording bg-clip-text font-bold"> repe</span>
           </h1>
           <p className="text-xl md:text-2xl text-muted-foreground max-w-2xl mx-auto">Grabamos tu partido y te generamos los highlights con IA para que revivas los mejores momentos</p>
         </div>
