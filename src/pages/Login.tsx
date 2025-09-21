@@ -6,6 +6,7 @@ import { Label } from "@/components/ui/label";
 import { Video, ArrowLeft } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 import { useToast } from "@/hooks/use-toast";
+import Header from "@/components/Header";
 
 const Login = () => {
   const [username, setUsername] = useState("");
@@ -38,7 +39,9 @@ const Login = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-hero flex items-center justify-center p-4 pt-20">
+    <>
+      <Header />
+      <div className="min-h-screen bg-gradient-hero flex items-center justify-center p-4 pt-20">
       <Card className="w-full max-w-md bg-card/95 backdrop-blur-sm shadow-card">
         <CardHeader className="text-center">
           <div className="w-16 h-16 mx-auto bg-gradient-recording rounded-full flex items-center justify-center mb-4">
@@ -88,6 +91,7 @@ const Login = () => {
         </CardContent>
       </Card>
     </div>
+    </>
   );
 };
 

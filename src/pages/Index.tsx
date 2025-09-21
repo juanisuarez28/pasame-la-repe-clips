@@ -6,6 +6,11 @@ const Index = () => {
     <>
       <Header />
       <Hero />
+      <footer className="bg-darker-surface py-4 text-center">
+        <p className="text-muted-foreground text-sm">
+          © 2024 Pasame la Repe. Todos los derechos reservados.
+        </p>
+      </footer>
     </>
   );
 };

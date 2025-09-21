@@ -2,17 +2,19 @@ import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { Calendar, Video } from "lucide-react";
 import { useNavigate } from "react-router-dom";
-import footballHeroBg from "@/assets/football-hero-bg.jpg";
+import footballActionGif from "@/assets/football-action.gif";
 const Hero = () => {
   const navigate = useNavigate();
-  return <div className="min-h-screen flex items-center justify-center relative overflow-hidden pt-16" style={{
-    backgroundImage: `url(${footballHeroBg})`,
-    backgroundSize: 'cover',
-    backgroundPosition: 'center',
-    backgroundRepeat: 'no-repeat'
-  }}>
-      {/* Dark overlay */}
-      <div className="absolute inset-0 bg-darker-surface/80" />
+  return <div className="min-h-screen flex items-center justify-center relative overflow-hidden pt-16">
+      {/* Background GIF */}
+      <div className="absolute inset-0">
+        <img 
+          src={footballActionGif} 
+          alt="Football action background" 
+          className="w-full h-full object-cover"
+          style={{ filter: 'brightness(0.3)' }}
+        />
+      </div>
       
       {/* Content */}
       <div className="relative z-10 container mx-auto px-4">

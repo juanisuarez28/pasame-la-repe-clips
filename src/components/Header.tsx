@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
-import { Menu, Video, Calendar } from "lucide-react";
+import { Menu, Video, Calendar, Radio } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 const Header = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -23,9 +23,12 @@ const Header = () => {
       <div className="container mx-auto px-4 py-4">
         <nav className="flex items-center justify-between">
           {/* Logo */}
-          <button onClick={() => navigate('/')} className="text-xl font-bold text-foreground hover:opacity-80 transition-opacity ml-20 md:text-xl">
-            Pasame la{' '}
-            <span className="text-primary">Repe</span>
+          <button onClick={() => navigate('/')} className="flex items-center space-x-2 text-xl font-bold text-foreground hover:opacity-80 transition-opacity ml-2 md:ml-20 md:text-xl">
+            <Radio className="w-6 h-6 text-recording-red" />
+            <span>
+              Pasame la{' '}
+              <span className="text-primary">Repe</span>
+            </span>
           </button>
 
           {/* Desktop Navigation */}

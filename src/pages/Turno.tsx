@@ -7,6 +7,7 @@ import { Textarea } from "@/components/ui/textarea";
 import { Calendar, ArrowLeft, Phone, MapPin, Users } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 import { useToast } from "@/hooks/use-toast";
+import Header from "@/components/Header";
 
 const Turno = () => {
   const [formData, setFormData] = useState({
@@ -53,7 +54,9 @@ const Turno = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-hero p-4 pt-20">
+    <>
+      <Header />
+      <div className="min-h-screen bg-gradient-hero p-4 pt-20">
       <div className="container mx-auto max-w-2xl py-8">
         {/* Desktop Card */}
         <Card className="hidden md:block bg-card/95 backdrop-blur-sm shadow-card">
@@ -281,6 +284,7 @@ const Turno = () => {
         </div>
       </div>
     </div>
+    </>
   );
 };
 
