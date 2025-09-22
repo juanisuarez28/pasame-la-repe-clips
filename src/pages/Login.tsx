@@ -57,7 +57,7 @@ const Login = () => {
         login(data[0]);
         toast({
           title: "¡Bienvenido!",
-          description: `Hola ${data[0].username}, accediendo a tu video...`,
+          description: `Hola ${data[0].nombre}, accediendo a tu video...`,
         });
         navigate('/dashboard');
       }
