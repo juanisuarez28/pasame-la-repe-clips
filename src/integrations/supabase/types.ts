@@ -52,10 +52,26 @@ export type Database = {
           created_at: string
           id: number
           nombre: string
-          password: string
           path: string
           username: string
         }[]
+      }
+      create_user: {
+        Args: {
+          user_name: string
+          user_nombre?: string
+          user_password: string
+          user_path?: string
+        }
+        Returns: number
+      }
+      hash_password: {
+        Args: { password: string }
+        Returns: string
+      }
+      verify_password: {
+        Args: { hash: string; password: string }
+        Returns: boolean
       }
     }
     Enums: {
