@@ -2,9 +2,20 @@ import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { Calendar, Video } from "lucide-react";
 import { useNavigate } from "react-router-dom";
+import { useAuth } from "@/hooks/useAuth";
 import footballActionGif from "@/assets/football-action.gif";
+
 const Hero = () => {
   const navigate = useNavigate();
+  const { isAuthenticated } = useAuth();
+
+  const handleVideoClick = () => {
+    if (isAuthenticated) {
+      navigate('/dashboard');
+    } else {
+      navigate('/login');
+    }
+  };
   return <div className="min-h-screen flex items-center justify-center relative overflow-hidden pt-16">
       {/* Background GIF */}
       <div className="absolute inset-0">
@@ -33,7 +44,7 @@ const Hero = () => {
               </div>
               <h2 className="text-3xl font-bold text-foreground">Mirá tu Repe</h2>
               <p className="text-muted-foreground">Accedé a tu video usando usuario y contraseña</p>
-              <Button variant="hero" size="lg" className="w-full" onClick={() => navigate('/login')}>
+              <Button variant="hero" size="lg" className="w-full" onClick={handleVideoClick}>
                 Ver mi video
               </Button>
             </div>
@@ -56,7 +67,7 @@ const Hero = () => {
 
         {/* Mobile Buttons */}
         <div className="md:hidden flex flex-col gap-4 max-w-sm mx-auto">
-          <Button variant="hero" size="lg" className="w-full h-14 text-base" onClick={() => navigate('/login')}>
+          <Button variant="hero" size="lg" className="w-full h-14 text-base" onClick={handleVideoClick}>
             <Video className="w-5 h-5 mr-2" />
             Mira tu Repe
           </Button>

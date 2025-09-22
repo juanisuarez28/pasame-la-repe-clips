@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
@@ -6,6 +6,7 @@ import { Label } from "@/components/ui/label";
 import { Video, ArrowLeft } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 import { useToast } from "@/hooks/use-toast";
+import { useAuth } from "@/hooks/useAuth";
 import { supabase } from "@/integrations/supabase/client";
 import Header from "@/components/Header";
 
@@ -15,6 +16,14 @@ const Login = () => {
   const [isLoading, setIsLoading] = useState(false);
   const navigate = useNavigate();
   const { toast } = useToast();
+  const { login, isAuthenticated } = useAuth();
+
+  useEffect(() => {
+    // If already authenticated, redirect to dashboard
+    if (isAuthenticated) {
+      navigate('/dashboard');
+    }
+  }, [isAuthenticated, navigate]);
 
   const handleLogin = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -44,8 +53,8 @@ const Login = () => {
           variant: "destructive",
         });
       } else {
-        // Store user data in localStorage for persistence
-        localStorage.setItem('currentUser', JSON.stringify(data[0]));
+        // Use auth context to store user data
+        login(data[0]);
         toast({
           title: "¡Bienvenido!",
           description: `Hola ${data[0].username}, accediendo a tu video...`,
