@@ -31,13 +31,11 @@ const Login = () => {
         return;
       }
 
-      // Query the plr-usuarios table
-      const { data, error } = await (supabase as any)
-        .from('plr-usuarios')
-        .select('*')
-        .eq('username', username)
-        .eq('password', password)
-        .maybeSingle();
+      // Query the plr-usuarios table using raw query to handle hyphenated table name
+      const result = await supabase.rpc('authenticate_user', {
+        user_name: username,
+        user_password: password
+      });
 
       if (error || !data) {
         toast({
