@@ -51,6 +51,7 @@ export type Database = {
         Returns: {
           created_at: string
           id: number
+          nombre: string
           password: string
           path: string
           username: string
