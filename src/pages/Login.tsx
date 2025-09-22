@@ -45,10 +45,10 @@ const Login = () => {
         });
       } else {
         // Store user data in localStorage for persistence
-        localStorage.setItem('currentUser', JSON.stringify(data));
+        localStorage.setItem('currentUser', JSON.stringify(data[0]));
         toast({
           title: "¡Bienvenido!",
-          description: `Hola ${username}, accediendo a tu video...`,
+          description: `Hola ${data[0].username}, accediendo a tu video...`,
         });
         navigate('/dashboard');
       }
