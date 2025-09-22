@@ -24,9 +24,9 @@ const Dashboard = () => {
   const videoId = user.path ? getYouTubeVideoId(user.path) : null;
   return <>
       <Header />
-      <div className="min-h-screen bg-gradient-hero pt-20 p-4">
+      <div className="min-h-screen bg-gradient-hero pt-20 md:pt-20 p-4">
         <div className="max-w-4xl mx-auto">
-          <div className="mb-8">
+          <div className="mb-8 mt-8 md:mt-0">
             <h1 className="text-3xl font-bold text-primary-foreground mb-2">
               ¡Hola {user?.nombre}!
             </h1>
