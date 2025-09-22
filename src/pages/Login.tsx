@@ -31,13 +31,13 @@ const Login = () => {
         return;
       }
 
-      // Query the plr-usuarios table using raw query to handle hyphenated table name
-      const result = await supabase.rpc('authenticate_user', {
+      // Query the plr-usuarios table using the database function
+      const { data, error } = await supabase.rpc('authenticate_user', {
         user_name: username,
         user_password: password
       });
 
-      if (error || !data) {
+      if (error || !data || data.length === 0) {
         toast({
           title: "Error",
           description: "Usuario o contraseña incorrectos.",

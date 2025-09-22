@@ -14,13 +14,45 @@ export type Database = {
   }
   public: {
     Tables: {
-      [_ in never]: never
+      "plr-usuarios": {
+        Row: {
+          created_at: string
+          id: number
+          password: string | null
+          path: string
+          username: string
+        }
+        Insert: {
+          created_at?: string
+          id?: number
+          password?: string | null
+          path: string
+          username?: string
+        }
+        Update: {
+          created_at?: string
+          id?: number
+          password?: string | null
+          path?: string
+          username?: string
+        }
+        Relationships: []
+      }
     }
     Views: {
       [_ in never]: never
     }
     Functions: {
-      [_ in never]: never
+      authenticate_user: {
+        Args: { user_name: string; user_password: string }
+        Returns: {
+          created_at: string
+          id: number
+          password: string
+          path: string
+          username: string
+        }[]
+      }
     }
     Enums: {
       [_ in never]: never
