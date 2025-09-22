@@ -5,6 +5,7 @@ interface User {
   username: string;
   password: string;
   path: string;
+  nombre: string;
   created_at: string;
 }
 

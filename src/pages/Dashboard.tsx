@@ -28,9 +28,9 @@ const Dashboard = () => {
         <div className="max-w-4xl mx-auto">
           <div className="mb-8">
             <h1 className="text-3xl font-bold text-primary-foreground mb-2">
-              ¡Hola {user?.username}!
+              ¡Hola {user?.nombre}!
             </h1>
-            <p className="text-primary-foreground/80">Acá podés ver la repetición del partido</p>
+            <p className="text-primary-foreground/80">Acá podés ver la <span className="text-transparent bg-gradient-recording bg-clip-text font-bold">Repe</span> del partido</p>
           </div>
 
           <Card className="bg-card/95 backdrop-blur-sm shadow-card">
@@ -39,7 +39,7 @@ const Dashboard = () => {
                 {user?.path ? <Video className="w-8 h-8 text-primary-foreground" /> : <Clock className="w-8 h-8 text-primary-foreground" />}
               </div>
               <CardTitle className="text-2xl">
-                {user?.path ? "Tu repetición está lista" : "Video en procesamiento"}
+                {user?.path ? <>Tu <span className="text-transparent bg-gradient-recording bg-clip-text font-bold">Repe</span> está lista</> : "Video en procesamiento"}
               </CardTitle>
             </CardHeader>
             <CardContent>
@@ -47,17 +47,12 @@ const Dashboard = () => {
                   {videoId ? <div className="relative w-full" style={{
                 paddingBottom: '56.25%'
               }}>
-                      <iframe className="absolute top-0 left-0 w-full h-full rounded-lg" src={`https://www.youtube.com/embed/${videoId}`} title="Repetición del partido" frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowFullScreen />
+                      <iframe className="absolute top-0 left-0 w-full h-full rounded-lg" src={`https://www.youtube.com/embed/${videoId}`} title="Repe del partido" frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowFullScreen />
                     </div> : <div className="text-center p-8 bg-muted rounded-lg">
                       <p className="text-muted-foreground">
                         Link de video no válido. Contactá al administrador.
                       </p>
                     </div>}
-                  <div className="flex gap-4 justify-center">
-                    <Button onClick={() => window.open(user?.path, '_blank')} className="bg-gradient-recording text-primary-foreground hover:opacity-90">
-                      Ver en YouTube
-                    </Button>
-                  </div>
                 </div> : <div className="text-center p-8">
                   <div className="mb-4">
                     <div className="animate-pulse bg-muted rounded-lg h-48 w-full mb-4"></div>
