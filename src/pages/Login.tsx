@@ -6,6 +6,7 @@ import { Label } from "@/components/ui/label";
 import { Video, ArrowLeft } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 import { useToast } from "@/hooks/use-toast";
+import { supabase } from "@/integrations/supabase/client";
 import Header from "@/components/Header";
 
 const Login = () => {
@@ -19,23 +20,49 @@ const Login = () => {
     e.preventDefault();
     setIsLoading(true);
 
-    // Simulate login process
-    setTimeout(() => {
-      if (username && password) {
-        toast({
-          title: "¡Bienvenido!",
-          description: "Para implementar el sistema de login completo, conectá tu proyecto a Supabase.",
-        });
-        // navigate('/video'); // Will be enabled once Supabase is connected
-      } else {
+    try {
+      if (!username || !password) {
         toast({
           title: "Error",
           description: "Por favor completá todos los campos.",
           variant: "destructive",
         });
+        setIsLoading(false);
+        return;
       }
-      setIsLoading(false);
-    }, 1000);
+
+      // Query the plr-usuarios table
+      const { data, error } = await (supabase as any)
+        .from('plr-usuarios')
+        .select('*')
+        .eq('username', username)
+        .eq('password', password)
+        .maybeSingle();
+
+      if (error || !data) {
+        toast({
+          title: "Error",
+          description: "Usuario o contraseña incorrectos.",
+          variant: "destructive",
+        });
+      } else {
+        // Store user data in localStorage for persistence
+        localStorage.setItem('currentUser', JSON.stringify(data));
+        toast({
+          title: "¡Bienvenido!",
+          description: `Hola ${username}, accediendo a tu video...`,
+        });
+        navigate('/dashboard');
+      }
+    } catch (error) {
+      toast({
+        title: "Error",
+        description: "Ocurrió un error al iniciar sesión.",
+        variant: "destructive",
+      });
+    }
+    
+    setIsLoading(false);
   };
 
   return (
