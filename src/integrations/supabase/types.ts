@@ -85,7 +85,6 @@ export type Database = {
           id: number
           nombre: string
           password: string
-          path: string
           username: string
         }[]
       }
