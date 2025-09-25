@@ -17,29 +17,61 @@ export type Database = {
       "plr-usuarios": {
         Row: {
           created_at: string
+          descarga: string | null
           id: number
           nombre: string | null
           password: string | null
-          path: string
           username: string
         }
         Insert: {
           created_at?: string
+          descarga?: string | null
           id?: number
           nombre?: string | null
           password?: string | null
-          path: string
           username: string
         }
         Update: {
           created_at?: string
+          descarga?: string | null
           id?: number
           nombre?: string | null
           password?: string | null
-          path?: string
           username?: string
         }
         Relationships: []
+      }
+      "plr-videos": {
+        Row: {
+          created_at: string
+          id: number
+          id_usuario: number | null
+          path: string | null
+          titulo: string | null
+        }
+        Insert: {
+          created_at?: string
+          id?: number
+          id_usuario?: number | null
+          path?: string | null
+          titulo?: string | null
+        }
+        Update: {
+          created_at?: string
+          id?: number
+          id_usuario?: number | null
+          path?: string | null
+          titulo?: string | null
+        }
+        Relationships: [
+          {
+            foreignKeyName: "plr-videos_id_usuario_fkey"
+            columns: ["id_usuario"]
+            isOneToOne: false
+            referencedRelation: "plr-usuarios"
+            referencedColumns: ["id"]
+          },
+        ]
       }
     }
     Views: {
