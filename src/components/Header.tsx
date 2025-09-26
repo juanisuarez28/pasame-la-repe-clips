@@ -1,10 +1,11 @@
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
-import { Menu, Video, Calendar, Radio, LogOut } from "lucide-react";
+import { Menu, Video, Calendar, LogOut } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 import { useAuth } from "@/hooks/useAuth";
 import { useToast } from "@/hooks/use-toast";
+import logoImage from "@/assets/logo.png";
 
 const Header = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -32,7 +33,11 @@ const Header = () => {
   };
 
   const menuItems = [{
-    label: "Mira tu Repe",
+    label: (
+      <span>
+        Mira tu <span className="text-repe-color">Repe</span>
+      </span>
+    ),
     action: handleVideoNavigation,
     icon: Video
   }, {
@@ -57,12 +62,12 @@ const Header = () => {
           {/* Logo */}
           <button 
             onClick={() => navigate('/')} 
-            className="flex items-center space-x-2 text-xl font-bold text-foreground hover:opacity-80 transition-opacity ml-2 md:ml-20 md:text-xl"
+            className="flex items-center space-x-3 text-xl font-bold text-foreground hover:opacity-80 transition-opacity ml-2 md:ml-20 md:text-xl font-bebas"
           >
-            <Radio className="w-6 h-6 text-recording-red" />
+            <img src={logoImage} alt="Logo" className="w-8 h-8" />
             <span>
               Pasame la{' '}
-              <span className="text-primary">Repe</span>
+              <span className="text-repe-color">Repe</span>
             </span>
           </button>
 

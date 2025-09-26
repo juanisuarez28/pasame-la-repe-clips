@@ -61,6 +61,7 @@ export default {
           DEFAULT: "hsl(var(--recording-red))",
           glow: "hsl(var(--recording-red-glow))",
         },
+        "repe-color": "hsl(var(--repe-color))",
         "dark-surface": "hsl(var(--dark-surface))",
         "darker-surface": "hsl(var(--darker-surface))",
       },
@@ -99,6 +100,9 @@ export default {
       animation: {
         "accordion-down": "accordion-down 0.2s ease-out",
         "accordion-up": "accordion-up 0.2s ease-out",
+      },
+      fontFamily: {
+        'bebas': ['Bebas Neue', 'sans-serif'],
       },
     },
   },
