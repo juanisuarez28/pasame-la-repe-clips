@@ -4,7 +4,6 @@ import { Calendar, Video } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 import { useAuth } from "@/hooks/useAuth";
 import footballActionGif from "@/assets/football-action.gif";
-import logoImage from "@/assets/logo-new.png";
 
 const Hero = () => {
   const navigate = useNavigate();
@@ -28,13 +27,10 @@ const Hero = () => {
       {/* Content */}
       <div className="relative z-10 container mx-auto px-4">
         <div className="text-center mb-8 md:mb-12">
-          <div className="flex items-center justify-center space-x-4 mb-6">
-            <img src={logoImage} alt="Logo" className="w-12 h-12 md:w-16 md:h-16" />
-            <h1 className="text-3xl sm:text-4xl font-bold text-foreground md:text-6xl font-bebas">
-              PASAME LA{' '}
-              <span className="text-repe-color font-bold">REPE</span>
-            </h1>
-          </div>
+          <h1 className="text-3xl sm:text-4xl font-bold text-foreground mb-6 md:text-6xl">
+            Pasame la 
+            <span className="text-transparent bg-gradient-recording bg-clip-text font-bold"> Repe</span>
+          </h1>
           <p className="text-base sm:text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto lg:text-xl">Grabamos tu partido y te generamos los highlights con IA para que revivas los mejores momentos</p>
         </div>
 
@@ -46,7 +42,7 @@ const Hero = () => {
               <div className="w-16 h-16 mx-auto bg-gradient-recording rounded-full flex items-center justify-center">
                 <Video className="w-8 h-8 text-primary-foreground" />
               </div>
-              <h2 className="text-3xl font-bold text-foreground font-bebas">Mirá tu <span className="text-repe-color">REPE</span></h2>
+              <h2 className="text-3xl font-bold text-foreground">Mirá tu Repe</h2>
               <p className="text-muted-foreground">Accedé a tu video usando usuario y contraseña</p>
               <Button variant="hero" size="lg" className="w-full" onClick={handleVideoClick}>
                 Ver mi video
@@ -60,7 +56,7 @@ const Hero = () => {
               <div className="w-16 h-16 mx-auto bg-gradient-recording rounded-full flex items-center justify-center">
                 <Calendar className="w-8 h-8 text-primary-foreground" />
               </div>
-              <h2 className="font-bold text-foreground text-3xl font-bebas">Sacar turno</h2>
+              <h2 className="font-bold text-foreground text-3xl">Sacar turno</h2>
               <p className="text-muted-foreground">Reservá fecha y horario para grabar tu partido</p>
               <Button variant="hero-outline" size="lg" className="w-full" onClick={() => navigate('/turno')}>
                 Reservar grabación
@@ -73,7 +69,7 @@ const Hero = () => {
         <div className="md:hidden flex flex-col gap-4 max-w-sm mx-auto">
           <Button variant="hero" size="lg" className="w-full h-14 text-base" onClick={handleVideoClick}>
             <Video className="w-5 h-5 mr-2" />
-            Mirá tu <span className="text-repe-color font-bebas">REPE</span>
+            Mira tu Repe
           </Button>
           <Button variant="hero-outline" size="lg" className="w-full h-14 text-base" onClick={() => navigate('/turno')}>
             <Calendar className="w-5 h-5 mr-2" />
