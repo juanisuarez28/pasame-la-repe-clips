@@ -6,13 +6,16 @@ import { useNavigate } from "react-router-dom";
 import { useAuth } from "@/hooks/useAuth";
 import { useToast } from "@/hooks/use-toast";
 import logoImage from "@/assets/logo-new.png";
-
 const Header = () => {
   const [isOpen, setIsOpen] = useState(false);
   const navigate = useNavigate();
-  const { isAuthenticated, logout } = useAuth();
-  const { toast } = useToast();
-
+  const {
+    isAuthenticated,
+    logout
+  } = useAuth();
+  const {
+    toast
+  } = useToast();
   const handleVideoNavigation = () => {
     if (isAuthenticated) {
       navigate('/dashboard');
@@ -21,7 +24,6 @@ const Header = () => {
     }
     setIsOpen(false);
   };
-
   const handleLogout = () => {
     logout();
     toast({
@@ -31,13 +33,10 @@ const Header = () => {
     navigate('/');
     setIsOpen(false);
   };
-
   const menuItems = [{
-    label: (
-      <span>
+    label: <span>
         Mirá tu <span className="text-repe-color font-bebas">REPE</span>
-      </span>
-    ),
+      </span>,
     action: handleVideoNavigation,
     icon: Video
   }, {
@@ -45,7 +44,6 @@ const Header = () => {
     path: "/turno",
     icon: Calendar
   }];
-
   const handleNavigation = (path?: string, action?: () => void) => {
     if (action) {
       action();
@@ -54,18 +52,13 @@ const Header = () => {
       setIsOpen(false);
     }
   };
-
-  return (
-    <header className="fixed top-0 left-0 right-0 z-50 bg-transparent backdrop-blur-sm">
+  return <header className="fixed top-0 left-0 right-0 z-50 bg-transparent backdrop-blur-sm">
       <div className="container mx-auto px-4 py-4">
         <nav className="flex items-center justify-between">
           {/* Logo */}
-          <button 
-            onClick={() => navigate('/')} 
-            className="flex items-center space-x-3 text-xl font-bold text-foreground hover:opacity-80 transition-opacity ml-2 md:ml-20 md:text-xl font-bebas"
-          >
-            <img src={logoImage} alt="Logo" className="w-8 h-8" />
-            <span>
+          <button onClick={() => navigate('/')} className="flex items-center space-x-3 text-xl font-bold text-foreground hover:opacity-80 transition-opacity  md:ml-20 font-bebas md:text-base p">
+            <img src={logoImage} alt="Logo" className="w-24 h-24 " />
+            <span className="text-base">
               PASAME LA{' '}
               <span className="text-repe-color">REPE</span>
             </span>
@@ -73,23 +66,12 @@ const Header = () => {
 
           {/* Desktop Navigation */}
           <div className="hidden md:flex items-center space-x-8 mr-20">
-            {menuItems.map((item, index) => (
-              <button 
-                key={item.path || index} 
-                onClick={() => handleNavigation(item.path, item.action)} 
-                className="text-foreground hover:text-primary transition-colors duration-200 font-medium"
-              >
+            {menuItems.map((item, index) => <button key={item.path || index} onClick={() => handleNavigation(item.path, item.action)} className="text-foreground hover:text-primary transition-colors duration-200 font-medium">
                 {item.label}
-              </button>
-            ))}
-            {isAuthenticated && (
-              <button 
-                onClick={handleLogout}
-                className="text-foreground hover:text-primary transition-colors duration-200 font-medium"
-              >
+              </button>)}
+            {isAuthenticated && <button onClick={handleLogout} className="text-foreground hover:text-primary transition-colors duration-200 font-medium">
                 Cerrar sesión
-              </button>
-            )}
+              </button>}
           </div>
 
           {/* Mobile Navigation */}
@@ -103,35 +85,22 @@ const Header = () => {
               <SheetContent side="right" className="w-64">
                 <div className="flex flex-col space-y-4 mt-8">
                   {menuItems.map((item, index) => {
-                    const Icon = item.icon;
-                    return (
-                      <button 
-                        key={item.path || index} 
-                        onClick={() => handleNavigation(item.path, item.action)} 
-                        className="flex items-center space-x-3 p-3 rounded-lg hover:bg-accent transition-colors text-left w-full"
-                      >
+                  const Icon = item.icon;
+                  return <button key={item.path || index} onClick={() => handleNavigation(item.path, item.action)} className="flex items-center space-x-3 p-3 rounded-lg hover:bg-accent transition-colors text-left w-full">
                         <Icon className="w-5 h-5 text-primary" />
                         <span className="font-medium">{item.label}</span>
-                      </button>
-                    );
-                  })}
-                  {isAuthenticated && (
-                    <button 
-                      onClick={handleLogout}
-                      className="flex items-center space-x-3 p-3 rounded-lg hover:bg-accent transition-colors text-left w-full"
-                    >
+                      </button>;
+                })}
+                  {isAuthenticated && <button onClick={handleLogout} className="flex items-center space-x-3 p-3 rounded-lg hover:bg-accent transition-colors text-left w-full">
                       <LogOut className="w-5 h-5 text-primary" />
                       <span className="font-medium">Cerrar sesión</span>
-                    </button>
-                  )}
+                    </button>}
                 </div>
               </SheetContent>
             </Sheet>
           </div>
         </nav>
       </div>
-    </header>
-  );
+    </header>;
 };
-
 export default Header;
