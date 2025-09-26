@@ -7,6 +7,7 @@ import { Video, Clock } from "lucide-react";
 import { useAuth } from "@/hooks/useAuth";
 import { supabase } from "@/integrations/supabase/client";
 import Header from "@/components/Header";
+import logoImage from "@/assets/logo-new.png";
 interface Video {
   id: number;
   titulo: string;
@@ -64,13 +65,16 @@ const Dashboard = () => {
       <Header />
       <div className="min-h-screen bg-gradient-hero pt-20 md:pt-20 p-4">
         <div className="max-w-4xl mx-auto">
-          <div className="mb-8 mt-8 md:mt-0">
-            <h1 className="text-3xl font-bold text-primary-foreground mb-2">
-              ¡Hola {user?.nombre}!
-            </h1>
-            <p className="text-primary-foreground/80">
-              Acá podés ver {videos.length > 1 ? 'las' : 'la'} <span className="text-transparent bg-gradient-recording bg-clip-text font-bold">Repe{videos.length > 1 ? 's' : ''}</span> {videos.length > 1 ? 'de los partidos' : 'del partido'}
-            </p>
+          <div className="mb-8 mt-8 md:mt-0 flex items-center justify-center">
+            <img src={logoImage} alt="Logo" className="w-12 h-12 mr-4" />
+            <div>
+              <h1 className="text-3xl font-bold text-primary-foreground mb-2 font-bebas">
+                ¡Hola {user?.nombre}!
+              </h1>
+              <p className="text-primary-foreground/80">
+                Acá podés ver {videos.length > 1 ? 'las' : 'la'} <span className="text-repe-color font-bold font-bebas">REPE{videos.length > 1 ? 'S' : ''}</span> {videos.length > 1 ? 'de los partidos' : 'del partido'}
+              </p>
+            </div>
           </div>
 
           <Card className="bg-card/95 backdrop-blur-sm shadow-card">
@@ -80,7 +84,7 @@ const Dashboard = () => {
               </div>
               <CardTitle className="text-2xl">
                 {loading ? "Cargando videos..." : videos.length > 0 ? (
-                  <>Tus <span className="text-transparent bg-gradient-recording bg-clip-text font-bold">Repe{videos.length > 1 ? 's' : ''}</span> {videos.length > 1 ? 'están listas' : 'está lista'}</>
+                  <>Tus <span className="text-repe-color font-bold font-bebas">REPE{videos.length > 1 ? 'S' : ''}</span> {videos.length > 1 ? 'están listas' : 'está lista'}</>
                 ) : "No hay videos disponibles"}
               </CardTitle>
             </CardHeader>
@@ -110,7 +114,7 @@ const Dashboard = () => {
                               <iframe 
                                 className="absolute top-0 left-0 w-full h-full rounded-lg" 
                                 src={`https://www.youtube.com/embed/${videoId}`} 
-                                title={video.titulo || "Repe del partido"} 
+                                title={video.titulo || "REPE del partido"} 
                                 frameBorder="0" 
                                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
                                 allowFullScreen 

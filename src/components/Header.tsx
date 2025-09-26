@@ -5,7 +5,7 @@ import { Menu, Video, Calendar, LogOut } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 import { useAuth } from "@/hooks/useAuth";
 import { useToast } from "@/hooks/use-toast";
-import logoImage from "@/assets/logo.png";
+import logoImage from "@/assets/logo-new.png";
 
 const Header = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -35,7 +35,7 @@ const Header = () => {
   const menuItems = [{
     label: (
       <span>
-        Mira tu <span className="text-repe-color">Repe</span>
+        Mirá tu <span className="text-repe-color font-bebas">REPE</span>
       </span>
     ),
     action: handleVideoNavigation,
@@ -66,8 +66,8 @@ const Header = () => {
           >
             <img src={logoImage} alt="Logo" className="w-8 h-8" />
             <span>
-              Pasame la{' '}
-              <span className="text-repe-color">Repe</span>
+              PASAME LA{' '}
+              <span className="text-repe-color">REPE</span>
             </span>
           </button>
 
