@@ -63,7 +63,7 @@ const Header = () => {
             <img 
               src={logoHeader} 
               alt="Pasame la Repe" 
-              className="h-8 md:h-12 w-auto"
+              className="h-12 md:h-20 w-auto"
             />
           </button>
 

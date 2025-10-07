@@ -4,6 +4,7 @@ import { Calendar, Video } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 import { useAuth } from "@/hooks/useAuth";
 import footballActionGif from "@/assets/football-action.gif";
+import logoHeader from "@/assets/logo-header.png";
 
 const Hero = () => {
   const navigate = useNavigate();
@@ -27,10 +28,13 @@ const Hero = () => {
       {/* Content */}
       <div className="relative z-10 container mx-auto px-4">
         <div className="text-center mb-8 md:mb-12">
-          <h1 className="text-3xl sm:text-4xl font-bold text-foreground mb-6 md:text-6xl">
-            Pasame la 
-            <span className="text-transparent bg-gradient-recording bg-clip-text font-bold"> Repe</span>
-          </h1>
+          <div className="flex justify-center mb-6">
+            <img 
+              src={logoHeader} 
+              alt="Pasame la Repe" 
+              className="h-24 sm:h-32 md:h-48 lg:h-56 w-auto"
+            />
+          </div>
           <p className="text-base sm:text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto lg:text-xl">Grabamos tu partido y te generamos los highlights con IA para que revivas los mejores momentos</p>
         </div>
 
