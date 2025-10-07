@@ -55,7 +55,7 @@ const Header = () => {
         <nav className="flex items-center justify-between">
           {/* Logo */}
           <button onClick={() => navigate('/')} className="hover:opacity-80 transition-opacity ml-2 md:ml-20">
-            <img src={logoHeader} alt="Pasame la Repe" className="h-4 md:h-8 w-auto" />
+            <img src={logoHeader} alt="Pasame la Repe" className="h-4 md:h-6 w-auto" />
           </button>
 
           {/* Desktop Navigation */}
