@@ -32,7 +32,7 @@ const Hero = () => {
             <img 
               src={logoHeader} 
               alt="Pasame la Repe" 
-              className="h-16 sm:h-20 md:h-28 lg:h-32 w-auto"
+              className="h-14 sm:h-16 md:h-20 lg:h-24 w-auto"
             />
           </div>
           <p className="text-base sm:text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto lg:text-xl">Grabamos tu partido y te generamos los highlights con IA para que revivas los mejores momentos</p>
