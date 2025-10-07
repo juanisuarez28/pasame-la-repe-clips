@@ -8,6 +8,16 @@ import { Calendar, ArrowLeft, Phone, MapPin, Users } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 import { useToast } from "@/hooks/use-toast";
 import Header from "@/components/Header";
+import { z } from "zod";
+
+const turnoSchema = z.object({
+  fecha: z.string().min(1, "La fecha es obligatoria"),
+  hora: z.string().min(1, "El horario es obligatorio"),
+  lugar: z.string().trim().min(1, "El lugar es obligatorio").max(200, "El lugar no puede superar los 200 caracteres"),
+  telefono: z.string().trim().min(1, "El teléfono es obligatorio").max(50, "El teléfono no puede superar los 50 caracteres"),
+  equipo: z.string().trim().max(100, "El nombre del equipo no puede superar los 100 caracteres").optional(),
+  comentarios: z.string().trim().max(500, "Los comentarios no pueden superar los 500 caracteres").optional()
+});
 
 const Turno = () => {
   const [formData, setFormData] = useState({
@@ -26,24 +36,58 @@ const Turno = () => {
     e.preventDefault();
     setIsLoading(true);
 
-    // Simulate form submission
-    setTimeout(() => {
-      if (formData.fecha && formData.hora && formData.lugar && formData.telefono) {
+    try {
+      // Validar los datos del formulario
+      const validatedData = turnoSchema.parse(formData);
+
+      // Construir el mensaje de WhatsApp
+      const mensaje = `*NUEVA SOLICITUD DE TURNO*
+
+📅 *Fecha:* ${validatedData.fecha}
+🕐 *Hora:* ${validatedData.hora}
+📍 *Lugar:* ${validatedData.lugar}
+📱 *Teléfono:* ${validatedData.telefono}${validatedData.equipo ? `\n⚽ *Equipo:* ${validatedData.equipo}` : ''}${validatedData.comentarios ? `\n\n💬 *Comentarios:*\n${validatedData.comentarios}` : ''}`;
+
+      // Número de WhatsApp (con código de país de Argentina)
+      const numeroWhatsApp = "5492494679896";
+      
+      // Crear el enlace de WhatsApp
+      const urlWhatsApp = `https://wa.me/${numeroWhatsApp}?text=${encodeURIComponent(mensaje)}`;
+
+      // Abrir WhatsApp
+      window.open(urlWhatsApp, '_blank');
+
+      toast({
+        title: "¡Perfecto!",
+        description: "Abriendo WhatsApp para enviar tu solicitud de turno.",
+      });
+
+      // Limpiar el formulario
+      setFormData({
+        fecha: "",
+        hora: "",
+        lugar: "",
+        telefono: "",
+        equipo: "",
+        comentarios: ""
+      });
+    } catch (error) {
+      if (error instanceof z.ZodError) {
         toast({
-          title: "¡Turno solicitado!",
-          description: "Para enviar automáticamente por WhatsApp, conectá tu proyecto a Supabase.",
+          title: "Error de validación",
+          description: error.errors[0].message,
+          variant: "destructive",
         });
-        // Here would be the WhatsApp integration once Supabase is connected
-        console.log("Datos del turno:", formData);
       } else {
         toast({
           title: "Error",
-          description: "Por favor completá todos los campos obligatorios.",
+          description: "Ocurrió un error al procesar el formulario.",
           variant: "destructive",
         });
       }
+    } finally {
       setIsLoading(false);
-    }, 1000);
+    }
   };
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
