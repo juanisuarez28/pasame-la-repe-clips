@@ -29,7 +29,7 @@ const Hero = () => {
       <div className="relative z-10 container mx-auto px-4">
         <div className="text-center mb-8 md:mb-12">
           <div className="flex justify-center mb-6">
-            <img src={logoHeader} alt="Pasame la Repe" className="h-12 sm:h-12 md:h-18 lg:h-22w-auto" />
+            <img src={logoHeader} alt="Pasame la Repe" className="h-10 sm:h-12 md:h-18 lg:h-22w-auto" />
           </div>
           <p className="text-base sm:text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto lg:text-lg">Grabamos tu partido y te generamos los highlights con IA para que revivas los mejores momentos</p>
         </div>
