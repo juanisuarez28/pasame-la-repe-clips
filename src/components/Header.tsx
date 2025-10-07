@@ -1,10 +1,11 @@
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
-import { Menu, Video, Calendar, Radio, LogOut } from "lucide-react";
+import { Menu, Video, Calendar, LogOut } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 import { useAuth } from "@/hooks/useAuth";
 import { useToast } from "@/hooks/use-toast";
+import logoHeader from "@/assets/logo-header.png";
 
 const Header = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -57,13 +58,13 @@ const Header = () => {
           {/* Logo */}
           <button 
             onClick={() => navigate('/')} 
-            className="flex items-center space-x-2 text-xl font-bold text-foreground hover:opacity-80 transition-opacity ml-2 md:ml-20 md:text-xl"
+            className="hover:opacity-80 transition-opacity ml-2 md:ml-20"
           >
-            <Radio className="w-6 h-6 text-recording-red" />
-            <span>
-              Pasame la{' '}
-              <span className="text-primary">Repe</span>
-            </span>
+            <img 
+              src={logoHeader} 
+              alt="Pasame la Repe" 
+              className="h-8 md:h-12 w-auto"
+            />
           </button>
 
           {/* Desktop Navigation */}
