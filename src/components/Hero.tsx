@@ -5,11 +5,11 @@ import { useNavigate } from "react-router-dom";
 import { useAuth } from "@/hooks/useAuth";
 import footballActionGif from "@/assets/football-action.gif";
 import logoHeader from "@/assets/logo-header.png";
-
 const Hero = () => {
   const navigate = useNavigate();
-  const { isAuthenticated } = useAuth();
-
+  const {
+    isAuthenticated
+  } = useAuth();
   const handleVideoClick = () => {
     if (isAuthenticated) {
       navigate('/dashboard');
@@ -29,13 +29,9 @@ const Hero = () => {
       <div className="relative z-10 container mx-auto px-4">
         <div className="text-center mb-8 md:mb-12">
           <div className="flex justify-center mb-6">
-            <img 
-              src={logoHeader} 
-              alt="Pasame la Repe" 
-              className="h-14 sm:h-16 md:h-20 lg:h-24 w-auto"
-            />
+            <img src={logoHeader} alt="Pasame la Repe" className="h-14 sm:h-12 md:h-20 lg:h-24 w-auto" />
           </div>
-          <p className="text-base sm:text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto lg:text-xl">Grabamos tu partido y te generamos los highlights con IA para que revivas los mejores momentos</p>
+          <p className="text-base sm:text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto lg:text-lg">Grabamos tu partido y te generamos los highlights con IA para que revivas los mejores momentos</p>
         </div>
 
         {/* Desktop Cards */}
