@@ -63,12 +63,7 @@ const Header = () => {
             {menuItems.map((item, index) => <button key={item.path || index} onClick={() => handleNavigation(item.path, item.action)} className="text-foreground hover:text-primary transition-colors duration-200 font-medium">
                 {item.label}
               </button>)}
-            <a 
-              href="https://www.instagram.com/pasame_larepe/" 
-              target="_blank" 
-              rel="noopener noreferrer"
-              className="text-foreground hover:text-primary transition-colors duration-200"
-            >
+            <a href="https://www.instagram.com/pasame_larepe/" target="_blank" rel="noopener noreferrer" className="text-foreground hover:text-primary transition-colors duration-200">
               <Instagram className="w-5 h-5" />
             </a>
             {isAuthenticated && <button onClick={handleLogout} className="text-foreground hover:text-primary transition-colors duration-200 font-medium">
@@ -93,12 +88,7 @@ const Header = () => {
                         <span className="font-medium">{item.label}</span>
                       </button>;
                 })}
-                  <a 
-                    href="https://www.instagram.com/pasame_larepe/" 
-                    target="_blank" 
-                    rel="noopener noreferrer"
-                    className="flex items-center justify-center p-3 rounded-lg hover:bg-accent transition-colors"
-                  >
+                  <a href="https://www.instagram.com/pasame_larepe/" target="_blank" rel="noopener noreferrer" className="flex items-center justify-center p-3 rounded-lg hover:bg-accent transition-colors">
                     <Instagram className="w-5 h-5 text-primary" />
                   </a>
                   {isAuthenticated && <button onClick={handleLogout} className="flex items-center space-x-3 p-3 rounded-lg hover:bg-accent transition-colors text-left w-full">
